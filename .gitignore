@@ -1,3 +1,13 @@
+# Custom folders to ignore:
+images/*
+!images/*.py
+!images/*.csv
+images/annotations_test.csv
+images/vindrcxr_test.json
+
+
+
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
