@@ -1,6 +1,7 @@
 # Custom folders to ignore:
 images/*
 !images/*.py
+!images/helpers
 !images/*.csv
 images/annotations_test.csv
 images/vindrcxr_test.json
