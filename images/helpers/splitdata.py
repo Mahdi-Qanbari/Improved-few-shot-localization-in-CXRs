@@ -8,21 +8,33 @@ from pathlib import Path
 import numpy as np
 from iterstrat.ml_stratifiers import MultilabelStratifiedKFold
 
-# --- CONFIGURATION ---
-input_json_path = 'base_training/Atelectasis/annotations_without_Atelectasis.json'
-train_output = "train_14cls.json"
-val_output = "val_14cls.json"
-val_size = 0.2
-seed = 42
-num_classes = 14
-min_class_count = 5  # Not used directly, but consider checking post-split
 
-# For image copying
-image_root = Path("base_training/Atelectasis/")     # Folder with all VinDr-CXR images
+# source:
+image_root = Path("vindercxr/vindrcxr_train/")     # Folder with all VinDr-CXR images
+
+# For saving output
 train_img_dir = Path("data/train/")
 val_img_dir = Path("data/val/")
+data = Path("data/")
 train_img_dir.mkdir(parents=True, exist_ok=True)
 val_img_dir.mkdir(parents=True, exist_ok=True)
+data.mkdir(parents=True, exist_ok=True)
+
+train_output = data/"train.json"   # "train_14cls.json"
+val_output = data/"val.json"       # "val_14cls.json"
+
+# --- CONFIGURATION ---
+input_json_path = 'vindercxr/vindrcxr_train.json'
+val_size = 0.2 
+seed = 42
+num_classes = 15      # Number of classes in the dataset to include
+min_class_count = 5  # Not used directly, but consider checking post-split
+
+
+
+
+
+
 
 # --- SET SEED ---
 random.seed(seed)
