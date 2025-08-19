@@ -1,13 +1,13 @@
 #------------------ Training the base model ---------------------
 
-#✅ 1 num_classes in the model head:
+# 1 num_classes in the model head:
         num_classes=14,  # Change to your actual number of classes
 #Match mean and std in data_preprocessor to your dataset (if not using ImageNet).
 
 
 
 
-# ✅ 2. Apply Class-Balanced Sampler:
+# 2. Apply Class-Balanced Sampler:
 train_dataloader = dict(
     sampler=dict(
         type='ClassBalancedSampler',
@@ -18,9 +18,9 @@ train_dataloader = dict(
 
 
 
-#✅ 3. Use Weighted Loss or Focal Loss (optional)
+# 3. Use Weighted Loss or Focal Loss (optional)
 
-# 🟩 Recommendation for you (ViDR-CXR, 15 classes, imbalanced):
+#  Recommendation for you (ViDR-CXR, 15 classes, imbalanced):
 
 #     ➤ Use ClassBalancedSampler + Focal Loss,
 #     or
@@ -45,17 +45,17 @@ loss_cls=dict(
     alpha=0.25,
     loss_weight=1.0
 )
-#⚠️ If switching to FocalLoss, use_sigmoid must be True.
+#⚠ If switching to FocalLoss, use_sigmoid must be True.
 
 
-# ✅ 4. Dataset class list & labels
+# 4. Dataset class list & labels
 
 #Make sure your metainfo is defined correctly:   ------> 14 
 metainfo = dict(
     classes=("Aortic enlargement", "Atelectasis", ..., "No finding")
 )
 
-#✅5. Optional: Data Augmentation (to prevent overfitting oversampled rare images)
+#5. Optional: Data Augmentation (to prevent overfitting oversampled rare images)
 
 #In your train_pipeline, consider using:
 dict(type='RandomFlip', prob=0.5),
@@ -65,7 +65,7 @@ dict(type='ColorJitter', brightness=0.2, contrast=0.2),
 
 
 
-# ✅ 6. Logging + Evaluation Strategy
+#  6. Logging + Evaluation Strategy
 
 # Make sure you evaluate on both:
 
